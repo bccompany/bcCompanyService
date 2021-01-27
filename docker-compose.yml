@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  app:
+    image: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    tty: true
+
+  dev:
+    image: dev
+    build:
+      context: .
+      dockerfile: develop.Dockerfile
+    ports:
+      - '3000:3000'
+    tty: true
+
+  prod:
+    image: prod
+    build:
+      context: .
+      dockerfile: produce.Dockerfile
+
+  # mongodb:
+  #   image: mongo:4
+
+  # postgresql:
+  #   image: postgres:13
+
+  # redis:
+  #   image: redis:6
