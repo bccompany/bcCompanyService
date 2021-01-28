@@ -9,10 +9,11 @@ export const typeDef = gql`
     mobile: String
     message: String
     sourceName: String
+    date: String
   }
 
   type Mutation {
-    add(name: String, email: String, phone: String, mobile: String, message: String, sourceName: String): String
+    add(name: String, email: String, phone: String, mobile: String, message: String, sourceName: String, date: String): String
   }
 
   type Query {
@@ -22,7 +23,7 @@ export const typeDef = gql`
 
 export default {
   Mutation: {
-    async add({name, email, phone, mobile, message, sourceName}){
+    async add({name, email, phone, mobile, message, sourceName, date}){
 
       const comment = await CommentCollection.create({
         name,
@@ -30,7 +31,8 @@ export default {
         phone,
         mobile,
         message,
-        sourceName
+        sourceName,
+        date
       });
 
       return `${name} comment added successfully`

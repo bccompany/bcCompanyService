@@ -11,15 +11,15 @@ const controller = (() => {
 
   /**
    * @name add - Add a comment
-   * @return {Object<{ name: string, email: string, mobile: string, phone: string, message: string, sourceName: string }>}
+   * @return {Object<{ name: string, email: string, mobile: string, phone: string, message: string, sourceName: string, date: string }>}
    *
-   * @example POST /comments/add { name: ${name}, email: ${email}, mobile: $(mobile), phone: $(phone), message: $(message), sourceName: $(sourceName) }
+   * @example POST /comments/add { name: ${name}, email: ${email}, mobile: $(mobile), phone: $(phone), message: $(message), sourceName: $(sourceName), date: $(date) }
    */
     router.post('/add', async (req, res) => {
-      const { name, email, mobile, phone, message, sourceName } = req.body;
+      const { name, email, mobile, phone, message, sourceName, date } = req.body;
 
       try {
-        const comment = new CommentCollection({name, email, mobile, phone, message, sourceName});
+        const comment = new CommentCollection({name, email, mobile, phone, message, sourceName, date});
         await comment.save();
         res.status(200).json({message: 'Comment saved'});
       } catch (error) {

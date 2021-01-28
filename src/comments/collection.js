@@ -8,7 +8,8 @@ import mongoose, { Schema } from 'mongoose';
  *   email: 'shyam.chen@gmail.com',
  *   phone: '22222222222'.
  *   message: 'this is it',
- *   sourceName: ''
+ *   sourceName: '',
+ *   date: ''
  * }
  */
 const commentSchema = new Schema({
@@ -28,6 +29,9 @@ const commentSchema = new Schema({
     type: String
   },
   sourceName: {
+    type: String
+  },
+  date: {
     type: String
   }
 });
