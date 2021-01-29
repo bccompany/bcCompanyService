@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server-express';
 import { CommentCollection } from './collection';
+import { ContactCollection } from '../contacts/collection';
 
 export const typeDef = gql`
   type Comment {
@@ -33,6 +34,13 @@ export default {
         message,
         sourceName,
         date
+      });
+
+      const contact = await ContactCollection.create({
+        name,
+        email,
+        phone,
+        mobile,
       });
 
       return `${name} comment added successfully`

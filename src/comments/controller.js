@@ -3,7 +3,8 @@ import passport from 'passport';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import { CommentCollection } from './collection';
+import { CommentCollection} from './collection';
+import { ContactCollection } from '../contacts/collection';
 
 const controller = (() => {
 
@@ -21,6 +22,8 @@ const controller = (() => {
       try {
         const comment = new CommentCollection({name, email, mobile, phone, message, sourceName, date});
         await comment.save();
+        const contact = new ContactCollection({name, email, mobile, phone});
+        await contact.save();
         res.status(200).json({message: 'Comment saved'});
       } catch (error) {
         res.status(400).json({error});
